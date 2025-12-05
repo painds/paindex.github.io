@@ -3102,8 +3102,8 @@ body {
    This nudges the visual container a few pixels to the right only on narrow mobile widths.
    If you prefer no nudge, remove this media block. */
 @media (max-width: 480px) {
-  .app-container { transform: translateX(14px); }
-  .centered-layout { transform: translateX(14px); }
+  .app-container { transform: translateX(20px); }
+  .centered-layout { transform: translateX(20px); }
 }
 
 /* Safety: ensure we don't introduce horizontal scroll from this patch */
@@ -3119,5 +3119,6 @@ html, body, .app-container { overflow-x: hidden !important; }
 
 
 /* ... rest of file kept intact (non-destructive additions earlier) ... */
+
 
 
