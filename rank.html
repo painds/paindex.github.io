@@ -1,10 +1,255 @@
-<DOCTYPEHTML>
-  <head>
-    <title>
-      Rank sıralaması
-    </title>
-  </head>
-  
-  <body>
-   <t2> <b>RANK PAZARTESİ EKLENECEK</b></t2> 
-  </body>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAİNDEX A.Ş - Duyuru</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #050505;
+            color: #0f0;
+            font-family: 'Orbitron', sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* --- Kar Yağışı Efekti --- */
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            color: #fff;
+            text-shadow: 0 0 5px #fff;
+            font-size: 1em;
+            font-family: Arial, sans-serif;
+            z-index: 1;
+            user-select: none;
+            pointer-events: none;
+            animation-name: fall;
+            animation-timing-function: linear;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(105vh);
+            }
+        }
+
+        /* --- Ana İçerik --- */
+        .container {
+            z-index: 10;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+
+        /* --- Başlık --- */
+        .company-title {
+            font-size: 4rem;
+            font-weight: 900;
+            color: #0f0;
+            text-transform: uppercase;
+            text-shadow: 
+                0 0 10px #0f0,
+                0 0 20px #0f0,
+                0 0 40px #0f0;
+            letter-spacing: 5px;
+            margin-bottom: 20px;
+            animation: flicker 3s infinite alternate;
+        }
+
+        @keyframes flicker {
+            0%, 18%, 22%, 25%, 53%, 57%, 100% {
+                opacity: 1;
+                text-shadow: 
+                0 0 10px #0f0,
+                0 0 20px #0f0,
+                0 0 40px #0f0;
+            }
+            20%, 24%, 55% {
+                opacity: 0.4;
+                text-shadow: none;
+            }
+        }
+
+        /* --- Neon Buton Kartı --- */
+        .neon-card {
+            position: relative;
+            width: 500px;
+            height: 250px;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .neon-card:hover {
+            transform: scale(1.02);
+        }
+
+        /* Dönen Neon Kenar */
+        .neon-card::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: conic-gradient(transparent, transparent, transparent, #0f0);
+            animation: rotate 4s linear infinite;
+        }
+
+        .neon-card::after {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: conic-gradient(transparent, transparent, transparent, #0f0);
+            animation: rotate 4s linear infinite;
+            animation-delay: -2s; /* Zıt fazda takip etmesi için */
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* İçerik Kutusu (Siyah Arka Plan) */
+        .neon-card .content-box {
+            position: absolute;
+            inset: 4px; /* Kenarlık kalınlığı */
+            background: #000;
+            border-radius: 16px;
+            z-index: 5;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-shadow: inset 0 0 20px rgba(0, 255, 0, 0.1);
+        }
+
+        .neon-card h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #fff; /* Başlık beyaz olsun ki yeşil içinde parlasın */
+            text-shadow: 0 0 5px #fff;
+        }
+
+        .neon-card p {
+            font-size: 1.5rem;
+            color: #0f0;
+            font-weight: bold;
+            text-align: center;
+            line-height: 1.5;
+            text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+        }
+
+        .date-badge {
+            margin-top: 15px;
+            background: rgba(0, 255, 0, 0.2);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: #fff;
+            border: 1px solid #0f0;
+        }
+
+        /* Yılbaşı Dekoru (Basit Çam Ağacı ikonu eklenebilir veya süs) */
+        .decor {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5rem;
+            filter: drop-shadow(0 0 5px #f00);
+            animation: swing 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes swing {
+            0% { transform: rotate(-10deg); }
+            100% { transform: rotate(10deg); }
+        }
+
+        /* Mobil Uyumluluk */
+        @media (max-width: 600px) {
+            .company-title {
+                font-size: 2.5rem;
+            }
+            .neon-card {
+                width: 90%;
+                height: auto;
+                min-height: 200px;
+            }
+            .neon-card .content-box {
+                padding: 30px 10px;
+            }
+            .neon-card p {
+                font-size: 1.2rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Başlık -->
+        <h1 class="company-title">PAİNDEX A.Ş</h1>
+
+        <!-- Neon Duyuru Kartı -->
+        <div class="neon-card">
+            <div class="content-box">
+                <div class="decor">🎄</div> <!-- Yılbaşı detayı -->
+                <h2>DUYURU</h2>
+                <p>RANK SİSTEMİ<br>PAZARTESİ EKLENİYOR</p>
+                <div class="date-badge">2025'e Hazır Mısın?</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Kar Yağışı Scripti
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.innerHTML = '❄'; // Kar tanesi sembolü
+            
+            // Rastgele konum ve boyut
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
+            snowflake.style.opacity = Math.random();
+            
+            // Rastgele düşüş hızı (2s ile 5s arası)
+            const duration = Math.random() * 3 + 2;
+            snowflake.style.animationDuration = duration + 's';
+
+            document.body.appendChild(snowflake);
+
+            // Ekrandan çıktıktan sonra sil
+            setTimeout(() => {
+                snowflake.remove();
+            }, duration * 1000);
+        }
+
+        // Kar tanesi oluşturma sıklığı
+        setInterval(createSnowflake, 100);
+    </script>
+</body>
+</html>
+
