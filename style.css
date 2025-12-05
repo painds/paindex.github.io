@@ -1134,6 +1134,38 @@ input[type="file"] {
   transform: translateY(0) scale(1);
   opacity: 1;
 }
+/* -------------------------
+   NON-DESTRUCTIVE CENTERING FIX (append this file or include after your main stylesheet)
+   Purpose: fix mobile centering issue without removing or changing any existing rules.
+   This only *adds* overrides and uses !important sparingly to ensure it wins over duplicates.
+   ------------------------- */
+
+/* Remove horizontal body padding that can offset visual centering on small devices */
+body {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* Force app/container blocks to use auto margins (true centering) */
+.app-container,
+.centered-layout {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-top: 0; /* keep existing vertical flow */
+}
+
+/* Small-nudge for very narrow screens where you mentioned "bi tık daha sağa" would perfectly center it.
+   This nudges the visual container a few pixels to the right only on narrow mobile widths.
+   If you prefer no nudge, remove this media block. */
+@media (max-width: 480px) {
+  .app-container { transform: translateX(6px); }
+  .centered-layout { transform: translateX(6px); }
+}
+
+/* Safety: ensure we don't introduce horizontal scroll from this patch */
+html, body, .app-container { overflow-x: hidden !important; }
+
+/* End of patch - keep this file loaded AFTER your main style sheet */
 
 /* Quick menu content */
 .quick-click-menu .qcm-inner { display:flex; flex-direction:column; gap:8px; }
@@ -3052,5 +3084,6 @@ input[type="file"] {
 /* ----------------- END: new styles ----------------- */
 
 /* -------------------- IMPROVEMENTS (kept) -------------------- */
+
 
 /* ... rest of file kept intact (non-destructive additions earlier) ... */
